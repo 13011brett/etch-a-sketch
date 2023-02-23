@@ -1,11 +1,13 @@
 const container = document.querySelector(".container");
-const reset = document.querySelector(".reset-etch");
+const reset = document.querySelectorAll(".reset-etch");
 const radios = document.getElementsByName('color');
 
 var currentColor = 'black';
 var backgroundColor = 'white';
+var currentWidth = '16px';
 var randomColor = Math.floor(Math.random()*16777215).toString(16);
 
+// Used for my RGB selection.
 function getRandomColor(){
     return '#' + (Math.floor(Math.random()*16777215).toString(16));
 }
@@ -16,16 +18,41 @@ for(var i = 0; i < 256; i++){
     divs.classList.add('sub');
     container.appendChild(divs);
 }
+// Have to query them after the creation above.
+const etchBoxes = document.querySelectorAll('.sub');
 
+
+
+//Used within the toggles to reset Etch Boxes
 function resetBoxes(){
-    etchBoxes.forEach(e => e.style.backgroundColor = backgroundColor);
+    etchBoxes.forEach(e => {
+        e.style.backgroundColor = backgroundColor
+        e.style.width = currentWidth;
+    } );
 }
 
-const etchBoxes = document.querySelectorAll('.sub');
 
 // Loop through the node list and listen for mouse over events.
 
-reset.addEventListener('click', () => etchBoxes.forEach(e => e.style.backgroundColor = backgroundColor)); // Couldn't get my resetBoxes function to work here, so did it manually.
+reset.forEach(e => e.addEventListener('click', () =>{
+    switch(e.classList[1]){
+        case '16px-boxes':
+            currentWidth = '16px';
+            break;
+        case '32px-boxes':
+            currentWidth = '32px';
+            break;
+        case '64px-boxes':
+            currentWidth = '64px';
+            break;
+        case '96px-boxes':
+            currentWidth = '96px';
+            break;
+        
+    } 
+    resetBoxes()
+
+})); 
 
 etchBoxes.forEach((e) => e.addEventListener('mouseover', (e) => {
     // Best way I found for it to continuously change the color on hover, currently can overwrite other selections (could change, but idc too much).
@@ -62,7 +89,6 @@ etchBoxes.forEach((e) => e.addEventListener('mouseover', (e) => {
     }
  }
 
-console.log(randomColor);
 
 
 
