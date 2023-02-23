@@ -35,7 +35,7 @@ function resetBoxes(){
 // Loop through the node list and listen for mouse over events.
 
 reset.forEach(e => e.addEventListener('click', () =>{
-    switch(e.classList[1]){
+    switch(e.classList[1]){ // Sort of a magic number, just grabs the second element in the class. Will refactor.
         case '16px-boxes':
             currentWidth = '16px';
             break;
