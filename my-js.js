@@ -21,20 +21,21 @@ function resetBoxes(){
     etchBoxes.forEach(e => e.style.backgroundColor = backgroundColor);
 }
 
-console.log(radios);
 const etchBoxes = document.querySelectorAll('.sub');
 
 // Loop through the node list and listen for mouse over events.
 
-reset.addEventListener('click', () => {
-    etchBoxes.forEach(e => e.style.backgroundColor = '')
-})
+reset.addEventListener('click', () => etchBoxes.forEach(e => e.style.backgroundColor = backgroundColor)); // Couldn't get my resetBoxes function to work here, so did it manually.
 
 etchBoxes.forEach((e) => e.addEventListener('mouseover', (e) => {
+    // Best way I found for it to continuously change the color on hover, currently can overwrite other selections (could change, but idc too much).
     if(currentColor != 'black' && currentColor != 'white'){ currentColor = getRandomColor()};
     e.target.style.backgroundColor = currentColor;
 })
  );
+
+// Loop through each of the radios and add an onlick function to change the current color
+
  for(radio in radios){
     radios[radio].onclick = function () {
         console.log(this.id);
