@@ -1,7 +1,8 @@
+
 body{
 
     background-color: rgb(232, 199, 200);
-
+    accent-color: black;
 }​
 
 .text{
@@ -13,18 +14,18 @@ body{
 .flexbox-sketch{
     display:flex;
     width:100vw;
-    border:1px solid red;
-    
     justify-content: space-evenly;
     align-items:center;
 }
+
 .sketch-options{
     display:flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     flex-grow: 0;
+    gap: 10px;
     padding: 10px;
-    
-
 }
 
 
@@ -41,23 +42,15 @@ body{
     border-style:solid;
     border-image: url('/2874906.svg') 20% round; 
     padding: 10px;
-
-    
 }
+
 .sub{
     display:flex;
     flex-wrap: wrap;
     flex-grow: 1;
     flex-shrink: 0;
-    
-    
     width:32px;
     height:auto;
-    
-    
-      
-    
-    
     border: 1px solid seashell;
     
 }
